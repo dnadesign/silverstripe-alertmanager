@@ -49,10 +49,16 @@ class AlertManager {
 	public static function SendEmail($to, $subject, $template, $templateData = null) {
 		// create email
 		$config = SiteConfig::current_site_config();
-		if (class_exists('StyledHtmlEmail')) {
-			$email = new StyledHtmlEmail($config->EmailFrom, $to, $subject);
+		if ($config->EmailFrom) {
+			$emailFrom = $config->EmailFrom;
 		} else {
-			$email = new Email($config->EmailFrom, $to, $subject);
+			$emailFrom = Email::getAdminEmail();
+		}
+
+		if (class_exists('StyledHtmlEmail')) {
+			$email = new StyledHtmlEmail($emailFrom, $to, $subject);
+		} else {
+			$email = new Email($emailFrom, $to, $subject);
 		}
 		//set template
 		$email->setTemplate($template);
