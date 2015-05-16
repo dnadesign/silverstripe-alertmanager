@@ -48,11 +48,13 @@ class AlertManager {
 
 	public static function SendEmail($to, $subject, $template, $templateData = null) {
 		// create email
-		$config = SiteConfig::current_site_config();
-		if ($config->EmailFrom) {
-			$emailFrom = $config->EmailFrom;
-		} else {
-			$emailFrom = Email::getAdminEmail();
+		$emailFrom = Config::inst()->get('Email', 'admin_email');
+		if (class_exists('SiteConfig')) {
+			$config = SiteConfig::current_site_config();
+			$templateData['SiteConfig'] = $config;
+			if ($config->EmailFrom) {
+				$emailFrom = $config->EmailFrom;
+			}
 		}
 
 		if (class_exists('StyledHtmlEmail')) {
@@ -70,8 +72,8 @@ class AlertManager {
 			$templateData = array();
 			$templateData[get_class($ob)] = $ob;
 		}
-		$templateData['SiteConfig'] = $config;
-		$templateData['SiteAddress'] = Director::absoluteBaseURL();
+
+		$templateData['Subject'] = $subject;
 		$email->populateTemplate($templateData);
 		//send mail
 		try {
