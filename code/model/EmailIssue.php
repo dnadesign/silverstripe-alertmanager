@@ -1,13 +1,14 @@
 <?php
-class EmailIssue extends DataObject {
+class EmailIssue extends DataObject
+{
 
-	private static $db = array(
-		'EmailAddress' => 'Varchar',
-		'Content' => 'Text',
-	);
+    private static $db = array(
+        'EmailAddress' => 'Varchar',
+        'Content' => 'Text',
+    );
 
-	private static $summary_fields = array(
-		'EmailAddress',
-		'Content'
-	);
+    private static $summary_fields = array(
+        'EmailAddress',
+        'Content'
+    );
 }
