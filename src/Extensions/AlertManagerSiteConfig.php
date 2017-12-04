@@ -1,4 +1,11 @@
 <?php
+
+namespace DNADesign\AlertManager\Extensions;
+
+use SilverStripe\ORM\DataExtension;;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+
 /**
  * Adds new global settings.
  */

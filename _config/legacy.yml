@@ -1,0 +1,7 @@
+---
+Name: alertmanagerlegacy
+---
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+    EmailIssue: DNADesign\AlertManager\Models\EmailIssue
+    UserAlert: DNADesign\AlertManager\Models\UserAlert
