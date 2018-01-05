@@ -10,7 +10,8 @@ use Swift_Mime_Message;
 
 /**
  * Wraps WildBit\Postmark\Transport so that the server_token gets via
- * SilverStripe's config system
+ * SilverStripe's config system.
+ * It also makes sure the SS config overrrides get applied
  */
 
 class PostmarkTransport extends Transport
