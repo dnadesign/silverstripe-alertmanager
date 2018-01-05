@@ -19,3 +19,5 @@ DNADesign\AlertManager\PostMarkTransport:
 
 SilverStripe\Core\Injector\Injector:
   Swift_Transport: DNADesign\AlertManager\PostMarkTransport
+  SilverStripe\Control\Email\Mailer:
+    class: DNADesign\AlertManager\PostMarkSwiftMailer
