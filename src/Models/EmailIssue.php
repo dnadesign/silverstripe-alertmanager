@@ -16,6 +16,9 @@ class EmailIssue extends DataObject
 
     private static $summary_fields = array(
         'EmailAddress',
-        'Content'
+        'Content',
+        'Created'
     );
+
+    private static $default_sort = 'Created DESC';
 }
