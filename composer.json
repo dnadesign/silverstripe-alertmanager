@@ -1,7 +1,6 @@
 {
     "name": "dnadesign/silverstripe-alertmanager",
     "description": "Manages emails, session and request alerts",
-    "type": "silverstripe-module",
     "authors": [{
         "name": "John Milmine",
         "email": "john.milmine@dna.co.nz"
