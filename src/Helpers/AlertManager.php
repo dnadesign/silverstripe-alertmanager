@@ -71,20 +71,17 @@ class AlertManager
     public static function SendEmail($to, $subject, $template, $templateData = null)
     {
         $emailFrom = Email::config()->get('admin_email');
-        if (class_exists('SiteConfig')) {
-            $config = SiteConfig::current_site_config();
-            if ($config->EmailFrom) {
-                $emailFrom = $config->EmailFrom;
-            }
+
+        $config = SiteConfig::current_site_config();
+        if ($config->EmailFrom) {
+            $emailFrom = $config->EmailFrom;
         }
 
         // create email
         $email = new Email($emailFrom, $to, $subject);
         $email->setData(array());
 
-        if (class_exists('SiteConfig')) {
-            $email->addData('SiteConfig', $config);
-        }
+        $email->addData('SiteConfig', $config);
 
         //set template
         $email->setHTMLTemplate($template);
