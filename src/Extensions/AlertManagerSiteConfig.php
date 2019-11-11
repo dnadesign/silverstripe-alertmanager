@@ -2,7 +2,8 @@
 
 namespace DNADesign\AlertManager\Extensions;
 
-use SilverStripe\ORM\DataExtension;;
+use SilverStripe\ORM\DataExtension;
+
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
 
@@ -13,7 +14,7 @@ use SilverStripe\Forms\TextField;
 class AlertManagerSiteConfig extends DataExtension
 {
 
-    public static $db = array(
+    private static $db = array(
         'EmailFrom' => 'Varchar',
     );
 

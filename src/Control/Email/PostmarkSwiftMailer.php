@@ -4,7 +4,6 @@ namespace DNADesign\AlertManager;
 
 use Exception;
 use SilverStripe\Control\Email\SwiftMailer;
-use DNADesign\AlertManager\Models\EmailIssue;
 use SilverStripe\Core\Convert;
 
 /**

@@ -7,11 +7,8 @@ use DNADesign\AlertManager\Models\UserAlert;
 use Exception;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Email\Email;
-use SilverStripe\Control\Session;
-use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Member;
-use SilverStripe\SiteConfig\SiteConfig;;
 use SilverStripe\View\ArrayData;
 
 class AlertManager
