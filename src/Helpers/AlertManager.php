@@ -2,18 +2,19 @@
 
 namespace DNADesign\AlertManager\Helpers;
 
-use DNADesign\AlertManager\Models\EmailIssue;
-use DNADesign\AlertManager\Models\UserAlert;
 use Exception;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Security\Member;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Email\Email;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\Security\Member;
-use SilverStripe\View\ArrayData;
+use SilverStripe\SiteConfig\SiteConfig;
+use DNADesign\AlertManager\Models\UserAlert;
+use DNADesign\AlertManager\Models\EmailIssue;
 
 class AlertManager
 {
-
     public static function addInterfaceAlert($content, $type = 'good')
     {
         $alert = array('Content' => $content, 'Type' => $type);
@@ -37,6 +38,7 @@ class AlertManager
             }
         }
         $sesh->set('InterfaceAlerts', null);
+
         return $al;
     }
 
@@ -47,6 +49,7 @@ class AlertManager
         $alert->Type = $type;
         $alert->Content = $content;
         $alert->write();
+
         return $alert;
     }
 
@@ -59,9 +62,11 @@ class AlertManager
                 foreach ($obs as $ob) {
                     $ob->delete();
                 }
+
                 return $obs;
             }
         }
+
         return false;
     }
 
