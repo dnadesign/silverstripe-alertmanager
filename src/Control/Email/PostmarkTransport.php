@@ -6,7 +6,7 @@ use Postmark\Transport;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Email\Email;
 use SilverStripe\Core\Config\Configurable;
-use Swift_Mime_Message;
+use Swift_Mime_SimpleMessage;
 
 /**
  * Wraps WildBit\Postmark\Transport so that the server_token gets via
@@ -23,7 +23,7 @@ class PostmarkTransport extends Transport
         parent::__construct($this->config()->server_token);
     }
 
-    public function send(Swift_Mime_Message $message, &$failedRecipients = null)
+    public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
         $this->beforeSendPerformed($message);
         return parent::send($message, $failedRecipients);
@@ -34,7 +34,7 @@ class PostmarkTransport extends Transport
      *
      * @param \Swift_Events_SendEvent $evt
      */
-    protected function beforeSendPerformed(Swift_Mime_Message $message)
+    protected function beforeSendPerformed(Swift_Mime_SimpleMessage $message)
     {
 
         $sendAllTo = Email::getSendAllEmailsTo();
@@ -64,7 +64,7 @@ class PostmarkTransport extends Transport
 
 
     /**
-     * @param \Swift_Mime_Message $message
+     * @param \Swift_Mime_SimpleMessage $message
      * @param array|string $to
      */
     protected function setTo($message, $to)
@@ -86,7 +86,7 @@ class PostmarkTransport extends Transport
     }
 
     /**
-     * @param \Swift_Mime_Message $message
+     * @param \Swift_Mime_SimpleMessage $message
      * @param array|string $from
      */
     protected function setFrom($message, $from)
